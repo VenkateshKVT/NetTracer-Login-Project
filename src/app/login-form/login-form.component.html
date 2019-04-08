@@ -1,0 +1,31 @@
+<div *ngIf="showLoginFailedAlert">
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="closeAlert()">&times;</a>
+            <strong>Invalid</strong> username or password!!.
+    </div>
+</div>
+
+<h3 style="text-align:center">Login</h3>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">&nbsp;</span>
+    </div>
+    <input type="text" class="form-control" name="userNameField" aria-label="Username" placeholder="UserName" 
+                [(ngModel)]="userName" minlength="1" maxlength="15" required #userNameField="ngModel">
+</div>
+<div *ngIf="userNameField.invalid && (userNameField.dirty || userNameField.touched)"
+            class="alert alert-danger">UserName is Invalid</div>
+<div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">&nbsp;</span>
+        </div>
+        <input type="password" class="form-control" name="passwordField" aria-label="password" placeholder="Password" 
+                [(ngModel)]="password" minlength="1" maxlength="15" required #passwordField="ngModel">
+</div>
+<div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)"
+            class="alert alert-danger">Password is Invalid</div>
+<div class="spacer-5">
+    <button id="button" class="btn btn-primary" (click)="login()">&nbsp;Login&nbsp;</button>
+    <a href="#" style="float:right">Forgot Password&#x3f;</a>
+</div>

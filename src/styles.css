@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.spacer-5 {
+    padding: 5px;
+}
+.spacer-10 {
+    padding: 10px;
+}
+.verticalLine {
+    border-left: 1px solid grey;
+    height: 500px;
+    border-radius: 2px;
+}
+.borderBox {
+    width: 70%;
+    border: 1px solid rgb(107, 107, 107);
+    padding: 25px;
+    margin: 25px;
+}
+.loginForm {
+    margin-top: 115px;
+}
+@media only screen and (max-width: 600px) {
+    .verticalLine {
+      visibility: hidden;
+    }
+  }

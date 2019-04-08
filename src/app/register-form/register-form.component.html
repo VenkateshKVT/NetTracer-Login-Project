@@ -1,0 +1,51 @@
+<div *ngIf="showSuccessAlert">
+  <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="closeAlert()">&times;</a>
+      <strong>User registered successfully</strong>.
+  </div>
+</div>
+<div class="container">
+  <h3 style="text-align:center">Register</h3>
+
+  <form #registrationForm="ngForm">
+    <div class="row spacer-5">
+      <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" 
+          [(ngModel)]="user.userName" minlength="1" maxlength="15" required #userName="ngModel" />
+    </div>
+    <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+            class="row spacer-10 alert alert-danger">Username is Invalid</div>
+    <div class="row spacer-5">
+        <input type="text" class="form-control" name="loginName" 
+            placeholder="Loginname" [(ngModel)]="user.loginName" minlength="1" maxlength="15" required #loginName="ngModel"/>
+    </div>
+    <div *ngIf="loginName.invalid && (loginName.dirty || loginName.touched)"
+            class="row spacer-10 alert alert-danger">Login name is Invalid</div>
+    <div class="row spacer-5">
+       <input type="password" class="form-control" name="password" 
+              placeholder="Password" [(ngModel)]="user.password" minlength="5" maxlength="15" required #password="ngModel"/>
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="row spacer-10 alert alert-danger">Password is Invalid</div>
+    <div class="row spacer-5">
+        <input type="email" class="form-control" name="email" 
+            placeholder="Email" [(ngModel)]="user.email" [pattern]="emailPattern" minlength="1" maxlength="30" required #email="ngModel"/>
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="row spacer-10 alert alert-danger">Email is Invalid</div>
+    <div class="row spacer-5">
+        <input type="text" class="form-control" name="contactNo" placeholder="Contact No" 
+                [(ngModel)]="user.contactNo" minlength="10" maxlength="15" pattern="[0-9]+" required #contactNo="ngModel"/>
+    </div>
+    <div *ngIf="contactNo.invalid && (contactNo.dirty || contactNo.touched)"
+             class="row spacer-10 alert alert-danger">Contact No. is Invalid</div>
+    <div class="row spacer-5">
+        <input type="text" class="form-control" name="address" placeholder="Address" 
+                [(ngModel)]="user.address" minlength="1" maxlength="15" required #address="ngModel"/>
+    </div>
+    <div *ngIf="address.invalid && (address.dirty || address.touched)"
+            class="row spacer-10 alert alert-danger">Address is Invalid</div>
+    <div class="spacer-5 row">
+      <button id="button" [disabled] = "!registrationForm.valid"class="btn btn-primary" (click)="addUser(user)">Add User</button>
+    </div>
+  </form>
+</div>

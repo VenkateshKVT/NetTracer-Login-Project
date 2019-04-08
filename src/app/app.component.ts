@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from './shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'NetTracerProject';
+  isLoggedIn: Boolean;
+
+  constructor(private _sharedService: SharedService) {
+    this.isLoggedIn = false;
+  }
+  public getLoginStatus():Boolean {
+    this.isLoggedIn = this._sharedService.getLoginStatus()
+    return this.isLoggedIn;
+  }
+
 }
